@@ -4,7 +4,8 @@
 <!--      JQUERY LINK-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!--      ANGULAR LINK-->
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+      <script src="lib/angular.min.js"></script>
+     <script src="lib/angular-route.min.js"></script>>
     <style>
        #map {
         height: 500px;
@@ -12,8 +13,19 @@
        }
     </style>
   </head>
-  <body>
-    <div id="map"></div>
+  <body ng-app="soundscape">
+   <div ng="view">
+   </div>
+    <div id="title"> Soundscape 
+    </div>
+    <div id="description"> 
+    This is soundscape! 
+  </div>
+    <div id="testNav">
+       <a href="#/scapes" class = "nav">Scapes</a>
+       <a href="#/add-scapes" class = "nav">Add A Scape</a>
+    </div>
+    <div id="map">
     <script>
       function initMap() {
         var uluru = {lat: 42.3359668, lng: -83.0511163};
@@ -37,6 +49,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1niGMapwRz2qHn2INhDZLYZZpLRjB54&callback=initMap">
     </script>
+  </div>
  
 
 
