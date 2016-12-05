@@ -3,7 +3,7 @@ var app = angular.module("soundscape", ["ngRoute"]);
 
 app.config(function($routeProvider) {
       $routeProvider.when("/", {
-        templateUrl: "views/soundscape.html",
+        templateUrl: "index.html",
         // controller: 'getController'
       
     });
