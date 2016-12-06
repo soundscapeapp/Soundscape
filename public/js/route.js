@@ -1,4 +1,4 @@
-(function() {
+// (function() {
 var app = angular.module("soundscape", ["ngRoute"]);
 
 app.config(function($routeProvider) {
@@ -20,4 +20,4 @@ app.config(function($routeProvider) {
 
 });
 
-})();
+// })();
