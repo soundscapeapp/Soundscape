@@ -10,58 +10,30 @@
     <script src="js/route.js"></script>
     <script src="js/googleScript.js"></script>
     <script src="js/app.js"></script>
+    <!--    FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Galada|Lobster|Racing+Sans+One" rel="stylesheet">
     <!--      CSS LINK-->
     <link rel="stylesheet" type="text/css" href="css/googleStyle.css">
-<!--
-    <style>
-        #map {
-            height: 500px;
-            width: 100%;
-        }
-    </style>
--->
+
 </head>
 
 <body ng-app="soundscape">
-    <div ng="view">
-    </div>
-    <div id="title"> Soundscape
+
+    <ng-view></ng-view>
+
+
+    <div id="title">
+        <h2>Soundscape</h2>
     </div>
     <div id="description">
-        This is soundscape!
+        <h3>Share a moment through music geographically</h3>
     </div>
     <div id="testNav">
         <a href="#/scapes" class="nav">Scapes</a>
-        <a href="#/add-scapes" class="nav">Add A Scape</a>
+        <a href="#/add-scapes" class="nav">Create Scape</a>
     </div>
     <div id="map">
-<!--
-        <script>
-            function initMap() {
-                var uluru = {
-                    lat: 42.3359668
-                    , lng: -83.0511163
-                };
-                var uluru2 = {
-                    lat: 42.335592
-                    , lng: -83.0489576
-                };
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 12
-                    , center: uluru
-                });
-                var marker = new google.maps.Marker({
-                    position: uluru
-                    , map: map
-                });
-                var marker2 = new google.maps.Marker({
-                    position: uluru2
-                    , map: map
-                });
 
-            }
-        </script>
--->
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1niGMapwRz2qHn2INhDZLYZZpLRjB54&callback=initMap">
         </script>
     </div>
@@ -69,9 +41,11 @@
 
 
 
+    <!--
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-route.min.js"></script>
     <script src="js/app.js"></script>
+-->
 </body>
 
 </html>

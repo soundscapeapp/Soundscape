@@ -4,17 +4,17 @@ var app = angular.module("soundscape", ["ngRoute"]);
 app.config(function($routeProvider) {
       $routeProvider.when("/", {
         templateUrl: "../index.html",
-        // controller: 'getController'
+         controller: 'getController'
       
     });
     $routeProvider.when("/scapes", {
         templateUrl: "../views/scapes.html",
-        // controller: 'returnController'
+//         controller: 'returnController'
       
     });
      $routeProvider.when("/add-scape", {
         templateUrl: "../views/add-scape.html",
-        // controller: 'returnController'
+//         controller: 'returnController'
       
     });
 
