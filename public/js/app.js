@@ -43,9 +43,9 @@ app.controller('getController', function($scope, plStore){
 	plStore.savePl(savedPlaylist);
 	};
 
-	});	
+});	
 
-	app.controller('setController', function($scope, plStore){
+app.controller('setController', function($scope, plStore){
  	var savedPlaylist = plStore.fetchPl();
  	testArray.push(savedPlaylist);
  	console.log(testArray);
