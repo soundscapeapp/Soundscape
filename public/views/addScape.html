@@ -1,40 +1,41 @@
 
 <h1>Testing...</h1>
-<button type="submit" ng-click="savePlaylist(playlist)">Add to playlist</button>
+
 
 <!-- <button type="button" ng-click="printPlaylist(element)">This is the other button</button> -->
 
-<div flow-init="{target: '/upload'}"
-     flow-files-submitted="$flow.upload()"
-     flow-file-success="$file.msg = $message">
-
-  <table>
-    <tr ng-repeat="file in $flow.files">
-        <td>{{$index+1}}</td>
-        <td>{{file.name}}</td>
-        <td>{{file.msg}}</td>
-    </tr>
-  </table>
-</div>
 
 
 <form>
-<input type="text" placeholder="Artist" name="artistName" ng-model="source.artist">
+<input type="text" placeholder="Title of Soundscape" name="soundscapeTitle" ng-model="soundscape.title">
 
-<input type="text" placeholder="Song Title" name="songTitle" ng-model="source.song">
+<input type="text" placeholder="Description" name="soundscapeDescription" ng-model="soundscape.description">
 
-<input type="text" placeholder="Playlist Name" name="playlistName" ng-model="source.playlist">
-
- <input type='file' ng-model="source.img"/>
-<img id="myImg" src="#" alt="your image" /> 
-
-<!--
-
-  <input type="file" flow-btn/>
-  Input OR Other element as upload button
-  <span class="btn" flow-btn>Upload File</span>
+<input type="text" placeholder="Img" name="soundscapeImg" ng-model="soundscape.image">
 
 
+<section ng-controller="data">
 
+<input type="text" ng-model="search">
+
+<button ng-click="findTracks()" >Search Tracks </button> 
+
+<div ng-repeat="info in trackInfo">
+<a href="#/addScape" ng-click="findOneObject(info)"><img ng-src="{{info.image}}" width="75px"/>
+<span>
+<p> {{info.albumName}}</p>
+<p> {{info.artist}}</p>
+</a>
+</span>
+</div>
+<p > {{denied}}</p>
+
+</section>
 
 </form>
+
+
+
+
+
+<button type="submit" ng-click="savePlaylist(playlist)" id="endButton">Add to playlist</button>
