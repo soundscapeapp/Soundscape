@@ -16,8 +16,14 @@ app.controller('getController', function($scope, plStore){
 
 });	
 
-app.controller('setController', function($scope, plStore){
+app.controller('setController', function($scope, plStore, $sce){
  	$scope.masterArray = plStore.fetchPl();
+ 	var fetchedSs = plStore.fetchSs();
+ 	$scope.trackId = fetchedSs.trackData.trackId;
+ 	$scope.url = "https://embed.spotify.com/?uri=spotify%3Atrack%3A" + $scope.trackId
+ 	$scope.test = $sce.trustAsResourceUrl($scope.url);
+
+
  	
  	// var savedPlaylist = plStore.fetchPl();
  	// testArray.push(savedPlaylist);
@@ -29,7 +35,7 @@ app.controller('setController', function($scope, plStore){
 
 app.controller('data', function($scope,$http, plStore){
 	// $scope.trackInfo = [];
-	$scope.search = "hellow";
+	$scope.search = "hello";
 	$scope.findTracks = findTracks;
 	console.log($scope.search);
 
@@ -71,7 +77,7 @@ app.controller('data', function($scope,$http, plStore){
 			// $scope.soundscape.trackData = info;
 			$scope.soundscape.trackData = object;
 			// console.log($scope.soundscape);
-			plStore.savePl($scope.soundscape);
+			// plStore.savePl($scope.soundscape);
 		};
 });
 
@@ -79,12 +85,12 @@ app.controller('data', function($scope,$http, plStore){
 //FACTORY
 app.factory("plStore", function(){
 
-var savedPlaylist = {};
+var soundscape = {};
 var masterArray = [];
 
 return {
 	savePl: function(pl){
-		savedPlaylist = pl;
+		soundscape = pl;
 		masterArray.push(pl);
 		console.log(masterArray);
 		// console.log(savedPlaylist);
@@ -94,6 +100,9 @@ return {
 		// console.log ('fetchPl');
 		// console.log(masterArray)
 		return masterArray;
+	},
+	fetchSs: function() {
+		return soundscape;
 	}
 	
 
