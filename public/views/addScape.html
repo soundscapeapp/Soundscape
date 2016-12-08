@@ -4,12 +4,15 @@
 
 <!-- <button type="button" ng-click="printPlaylist(element)">This is the other button</button> -->
 
+
+
 <form>
 <input type="text" placeholder="Title of Soundscape" name="soundscapeTitle" ng-model="soundscape.title">
 
 <input type="text" placeholder="Description" name="soundscapeDescription" ng-model="soundscape.description">
 
 <input type="text" placeholder="Img" name="soundscapeImg" ng-model="soundscape.image">
+
 
 <section ng-controller="data">
 
@@ -34,6 +37,5 @@
 
 
 
-<!-- <input type='file' ng-model="source.img"/>
-<img id="myImg" src="#" alt="your image" /> -->
+
 <button type="submit" ng-click="savePlaylist(playlist)" id="endButton">Add to playlist</button>
