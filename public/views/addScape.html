@@ -4,6 +4,20 @@
 
 <!-- <button type="button" ng-click="printPlaylist(element)">This is the other button</button> -->
 
+<div flow-init="{target: '/upload'}"
+     flow-files-submitted="$flow.upload()"
+     flow-file-success="$file.msg = $message">
+
+  <table>
+    <tr ng-repeat="file in $flow.files">
+        <td>{{$index+1}}</td>
+        <td>{{file.name}}</td>
+        <td>{{file.msg}}</td>
+    </tr>
+  </table>
+</div>
+
+
 <form>
 <input type="text" placeholder="Artist" name="artistName" ng-model="source.artist">
 
@@ -11,8 +25,14 @@
 
 <input type="text" placeholder="Playlist Name" name="playlistName" ng-model="source.playlist">
 
-<!-- <input type='file' ng-model="source.img"/>
-<img id="myImg" src="#" alt="your image" /> -->
+ <input type='file' ng-model="source.img"/>
+<img id="myImg" src="#" alt="your image" /> 
+
+<!--
+
+  <input type="file" flow-btn/>
+  Input OR Other element as upload button
+  <span class="btn" flow-btn>Upload File</span>
 
 
 
