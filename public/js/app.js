@@ -28,13 +28,14 @@ app.controller('setController', function($scope, plStore){
 // var app = angular.module('soundscape', []);
 
 app.controller('data', function($scope,$http, plStore){
-	$scope.trackInfo = [];
+	// $scope.trackInfo = [];
 	$scope.search = "hellow";
 	$scope.findTracks = findTracks;
 	console.log($scope.search);
 
 	$scope.newArray = [];
 	function findTracks(){
+		$scope.trackInfo = [];
 		$http
 		.get("https://api.spotify.com/v1/search?q="+ encodeURIComponent($scope.search) +"&type=track")
 		.then(function find(response){
@@ -45,6 +46,7 @@ app.controller('data', function($scope,$http, plStore){
 
 				if(songData!=null){
 
+					$scope.denied=""
 					$scope.image=songData.album.images[0].url;
 					$scope.albumName=songData.album.name;
 					$scope.artist=songData.album.artists[0].name;
@@ -54,7 +56,7 @@ app.controller('data', function($scope,$http, plStore){
 					$scope.trackInfo.push($scope.newObject);
 				} else {
 
-					$scope.denied="'No results available'"}
+					$scope.denied="No results available"}
 
 				}
 

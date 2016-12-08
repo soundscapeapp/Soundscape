@@ -1,19 +1,26 @@
-var app = angular.module('viewerApp');
+var app = angular.module("soundscape");
 
-app.factory('madLib', function(){
+//FACTORY
+app.factory("plStore", function(){
 
-    var madlibs = {};
+var savedPlaylist = {};
+var masterArray = [];
 
-    function saveMadLibs(answers){
-      madlibs = answers;
-    }
+return {
+  savePl: function(pl){
+    savedPlaylist = pl;
+    masterArray.push(pl);
+    console.log(masterArray);
+    // console.log(savedPlaylist);
+  },
+  fetchPl: function() {
+    // return savedPlaylist;
+    // console.log ('fetchPl');
+    // console.log(masterArray)
+    return masterArray;
+  }
+  
 
-    function getMadLibs(){
-      return madlibs;
-    }
+};
 
-    return {
-      getMadLibs:getMadLibs,
-      saveMadLibs: saveMadLibs
-    }
 });
