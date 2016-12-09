@@ -4,17 +4,7 @@ var app = angular.module("soundscape");
 
 
 //CONTROLLERS
-app.controller('getController', function($scope, plStore){
-	
-	//contoller stuff 
 
-	$scope.savePlaylist = function(playlist){
-	var savedPlaylist = $scope.soundscape;
-	// console.log(savedPlaylist);
-	plStore.savePl(savedPlaylist);
-	};
-
-});	
 
 app.controller('setController', function($scope, plStore, $sce){
  	$scope.masterArray = plStore.fetchPl();
@@ -80,6 +70,18 @@ app.controller('data', function($scope,$http, plStore){
 			// plStore.savePl($scope.soundscape);
 		};
 });
+
+app.controller('getController', function($scope, plStore){
+	
+	//contoller stuff 
+
+	$scope.savePlaylist = function(playlist){
+	var savedPlaylist = $scope.soundscape;
+	// console.log(savedPlaylist);
+	plStore.savePl(savedPlaylist);
+	};
+
+});	
 
 
 //FACTORY

@@ -1,4 +1,4 @@
- var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       var labelIndex = 0;  
 
 function initMap() {
@@ -28,29 +28,37 @@ function initMap() {
           , draggable: true
           , animation: google.maps.Animation.DROP
       });
-      
-       map.addListener('click', function(e) {
+      marker.addListener('rightclick', function() {
+          infowindow.open(marker, marker2);
+        });
+       map.addListener('rightclick', function(e) {
           placeMarkerAndPanTo(e.latLng, map);
         });
-      
+        
     
       // To add the marker to the map, call setMap();
 marker.setMap(map);
  
       // We add a DOM event here to show an alert if the DIV containing the
       // map is clicked.
-//      google.maps.event.addDomListener(marker, 'click', function () {
-//          window.location = "https://accounts.spotify.com/en/authorize?response_type=code&client_id=8a72f2cc750a45f1830d340437537e02&scope=user-read-private%20user-read-email&redirect_uri=http:%2F%2Flocalhost:8888%2Fcallback&state=H8CWJgTbP8D9Z2yT";
-//
-//      });
-//      google.maps.event.addDomListener(marker2, 'click', function () {
-//          //          window.alert('This will be a modal');
-//          window.location = "https://accounts.spotify.com/en/authorize?response_type=code&client_id=8a72f2cc750a45f1830d340437537e02&scope=user-read-private%20user-read-email&redirect_uri=http:%2F%2Flocalhost:8888%2Fcallback&state=H8CWJgTbP8D9Z2yT";
-//
-//
-//      });
+      google.maps.event.addDomListener(marker, 'dblclick', function () {
+
+//          window.location.pathname = "/scapes.html"
+          document.location = "http://localhost:8080/#/scapes"
+
+      });
+      google.maps.event.addDomListener(marker2, 'dblclick', function () {
+          //          window.alert('This will be a modal');
+           document.location = "http://localhost:8080/#/scapes"
+
+
+      });
       
-      }
+      }//END OF SET MARKER FUNCTION
+
+
+
+
      function placeMarkerAndPanTo(latLng, map) {
         var marker = new google.maps.Marker({
           position: latLng,
@@ -58,17 +66,25 @@ marker.setMap(map);
           label: labels[labelIndex++ % labels.length],
            
         });
-          marker.addListener('click', function() {
+          marker.addListener('rightclick', function() {
           infowindow.open(map, marker);
         });
+          
+         google.maps.event.addDomListener(marker, 'dblclick', function () {
+          //          window.alert('This will be a modal');
+           document.location = "http://localhost:8080/#/scapes"
+
+
+      });
+         
           var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading">Check out this Soundscape</h1>'+
             '<div id="bodyContent">'+
-            '<p><b>Create</b>, a <b>Soundscape</b>, for the world to see and hear ' + '</p>' +
-            '<p>Soundscape Description: This was the first place I took my parents in detroit, nothing brings these memories back like the beatles'+
-            ' <img src="imgs/belle.jpg"> '+
+             '<p id="create-scape"><b>Create</b>, a <b>Soundscape</b>, for the world to see and hear ' + '</p>' +
+            '<p id="scape-description">Soundscape Description: This was the first place I took my parents in detroit, nothing brings these memories back like the beatles'+
+  
             ' (last visited November 24, 1984).</p> '+
             '</div>'+
             '</div>';
@@ -81,5 +97,5 @@ marker.setMap(map);
          
          
         map.panTo(latLng);
-      }
+      }//END OF ADD MARKER FUNCTION
       
