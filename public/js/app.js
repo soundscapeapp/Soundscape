@@ -6,25 +6,27 @@ var app = angular.module("soundscape");
 //CONTROLLERS
 
 //activates when routing to scapes page 
-app.controller('setController', function($scope, plStore, $sce){
- 	$scope.masterArray = plStore.fetchPl();
- 	var fetchedSs = plStore.fetchSs();
+app.controller('modalController', function($scope, ssStore, $sce){
+ 	$scope.masterArray = ssStore.fetchMasterArray();
+ 	
+ 	//iframe magic
+ 	var fetchedSs = ssStore.fetchSs();
  	$scope.trackId = fetchedSs.trackData.trackId;
  	$scope.url = "https://embed.spotify.com/?uri=spotify%3Atrack%3A" + $scope.trackId
  	$scope.test = $sce.trustAsResourceUrl($scope.url);
 
 
  	
- 	// var savedPlaylist = plStore.fetchPl();
+ 	// var savedPlaylist = ssStore.fetchMasterArray();
  	// testArray.push(savedPlaylist);
  	// console.log(testArray);
- 	// plStore.clearPl();
+ 	// ssStore.clearPl();
 }); 
 
 // var app = angular.module('soundscape', []);
 
 //grabs from spotify API
-app.controller('data', function($scope,$http, plStore){
+app.controller('spotifyData', function($scope, $http, ssStore){
 	// $scope.trackInfo = [];
 	$scope.search = " ";
 	$scope.findTracks = findTracks;
@@ -63,26 +65,25 @@ app.controller('data', function($scope,$http, plStore){
 	};
 	
 //activates when clicking on song from song list
-	$scope.findOneObject = function(object){
+	$scope.getOneSong = function(object){
 			// console.log(object);
 			$scope.trackInfo=[];
 			$scope.trackInfo.push(object);
 			// $scope.soundscape.trackData = info;
 			$scope.soundscape.trackData = object;
 			// console.log($scope.soundscape);
-			// plStore.savePl($scope.soundscape);
+			// ssStore.saveSs($scope.soundscape);
 		};
 });
 
 //user input information (title, description) -stores - pushes to master array
-app.controller('getController', function($scope, plStore){
+app.controller('addScapeController', function($scope, ssStore){
 	
-	//contoller stuff 
 
-	$scope.savePlaylist = function(playlist){
-	var savedPlaylist = $scope.soundscape;
+	$scope.saveSoundscape = function(soundscape){
+	var savedSoundscape = $scope.soundscape;
 	// console.log(savedPlaylist);
-	plStore.savePl(savedPlaylist);
+	ssStore.saveSs(savedSoundscape);
 	};
 
 });	
@@ -90,21 +91,21 @@ app.controller('getController', function($scope, plStore){
 
 //FACTORY
 //stores and returns information
-app.factory("plStore", function(){
+app.factory("ssStore", function(){
 
 var soundscape = {};
 var masterArray = [];
 
 return {
-	savePl: function(pl){
-		soundscape = pl;
-		masterArray.push(pl);
+	saveSs: function(ss){
+		soundscape = ss;
+		masterArray.push(ss);
 		console.log(masterArray);
 		// console.log(savedPlaylist);
 	},
-	fetchPl: function() {
+	fetchMasterArray: function() {
 		// return savedPlaylist;
-		// console.log ('fetchPl');
+		// console.log ('fetchMasterArray');
 		// console.log(masterArray)
 		return masterArray;
 	},
