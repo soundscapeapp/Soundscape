@@ -5,7 +5,7 @@ var app = angular.module("soundscape");
 
 //CONTROLLERS
 
-
+//activates when routing to scapes page 
 app.controller('setController', function($scope, plStore, $sce){
  	$scope.masterArray = plStore.fetchPl();
  	var fetchedSs = plStore.fetchSs();
@@ -23,9 +23,10 @@ app.controller('setController', function($scope, plStore, $sce){
 
 // var app = angular.module('soundscape', []);
 
+//grabs from spotify API
 app.controller('data', function($scope,$http, plStore){
 	// $scope.trackInfo = [];
-	$scope.search = "hello";
+	$scope.search = " ";
 	$scope.findTracks = findTracks;
 	console.log($scope.search);
 
@@ -60,6 +61,8 @@ app.controller('data', function($scope,$http, plStore){
 });
 
 	};
+	
+//activates when clicking on song from song list
 	$scope.findOneObject = function(object){
 			// console.log(object);
 			$scope.trackInfo=[];
@@ -71,6 +74,7 @@ app.controller('data', function($scope,$http, plStore){
 		};
 });
 
+//user input information (title, description) -stores - pushes to master array
 app.controller('getController', function($scope, plStore){
 	
 	//contoller stuff 
@@ -85,6 +89,7 @@ app.controller('getController', function($scope, plStore){
 
 
 //FACTORY
+//stores and returns information
 app.factory("plStore", function(){
 
 var soundscape = {};
@@ -112,6 +117,7 @@ return {
 
 });
 
+//soundscape directive, causes ng-repeat and prints soundscape
 app.directive('ssSoundscape', function(){
 	console.log('directive test')
 	return {

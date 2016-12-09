@@ -21,13 +21,14 @@ function initMap() {
           , position: uluru
           , draggable: true
           , animation: google.maps.Animation.DROP
+        
       });
-      var marker2 = new google.maps.Marker({
-          map: map
-          , position: uluru2
-          , draggable: true
-          , animation: google.maps.Animation.DROP
-      });
+      // var marker2 = new google.maps.Marker({
+      //     map: map
+      //     , position: uluru2
+      //     , draggable: true
+      //     , animation: google.maps.Animation.DROP
+      // });
       marker.addListener('rightclick', function() {
           infowindow.open(marker, marker2);
         });
