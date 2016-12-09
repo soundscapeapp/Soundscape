@@ -61,6 +61,15 @@ a {
     color: rgba(61, 66, 67, 0.8);
 }
 
+#instructions{
+    position: relative;
+    left: 36%;
+    width: 30%;
+    text-align: center;
+    font-family:arial;
+    top: 30px;
+
+}
 iframe {
     
 }

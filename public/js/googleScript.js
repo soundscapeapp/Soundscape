@@ -21,7 +21,7 @@ function initMap() {
           , position: uluru
           , draggable: true
           , animation: google.maps.Animation.DROP
-        
+
       });
       // var marker2 = new google.maps.Marker({
       //     map: map
@@ -29,31 +29,35 @@ function initMap() {
       //     , draggable: true
       //     , animation: google.maps.Animation.DROP
       // });
-      marker.addListener('rightclick', function() {
-          infowindow.open(marker, marker2);
-        });
+      // marker.addListener('rightclick', function() {
+      //     infowindow.open(marker, marker2);
+      //   });
        map.addListener('rightclick', function(e) {
           placeMarkerAndPanTo(e.latLng, map);
         });
         
-    
-      // To add the marker to the map, call setMap();
-marker.setMap(map);
- 
-      // We add a DOM event here to show an alert if the DIV containing the
-      // map is clicked.
       google.maps.event.addDomListener(marker, 'dblclick', function () {
 
 //          window.location.pathname = "/scapes.html"
           document.location = "http://localhost:8080/#/scapes"
 
       });
-      google.maps.event.addDomListener(marker2, 'dblclick', function () {
-          //          window.alert('This will be a modal');
-           document.location = "http://localhost:8080/#/scapes"
+
+           marker.addListener('rightclick', function() {
+          infowindow.open(map, marker);
+        });
+      // To add the marker to the map, call setMap();
+marker.setMap(map);
+ 
+      // We add a DOM event here to show an alert if the DIV containing the
+      // map is clicked.
+    
+      // google.maps.event.addDomListener(marker2, 'dblclick', function () {
+      //     //          window.alert('This will be a modal');
+      //      document.location = "http://localhost:8080/#/scapes"
 
 
-      });
+      // });
       
       }//END OF SET MARKER FUNCTION
 
