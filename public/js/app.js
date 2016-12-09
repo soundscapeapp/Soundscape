@@ -1,8 +1,5 @@
 var app = angular.module("soundscape");
 
-
-
-
 //CONTROLLERS
 
 //activates when routing to scapes page 
@@ -15,19 +12,11 @@ app.controller('modalController', function($scope, ssStore, $sce){
  	$scope.url = "https://embed.spotify.com/?uri=spotify%3Atrack%3A" + $scope.trackId
  	$scope.test = $sce.trustAsResourceUrl($scope.url);
 
-
- 	
- 	// var savedPlaylist = ssStore.fetchMasterArray();
- 	// testArray.push(savedPlaylist);
- 	// console.log(testArray);
- 	// ssStore.clearPl();
 }); 
-
-// var app = angular.module('soundscape', []);
 
 //grabs from spotify API
 app.controller('spotifyData', function($scope, $http, ssStore){
-	// $scope.trackInfo = [];
+	
 	$scope.search = " ";
 	$scope.findTracks = findTracks;
 	console.log($scope.search);
@@ -66,13 +55,13 @@ app.controller('spotifyData', function($scope, $http, ssStore){
 	
 //activates when clicking on song from song list
 	$scope.getOneSong = function(object){
-			// console.log(object);
+			
 			$scope.trackInfo=[];
 			$scope.trackInfo.push(object);
-			// $scope.soundscape.trackData = info;
+			
 			$scope.soundscape.trackData = object;
-			// console.log($scope.soundscape);
-			// ssStore.saveSs($scope.soundscape);
+			
+			
 		};
 });
 
@@ -82,7 +71,7 @@ app.controller('addScapeController', function($scope, ssStore){
 
 	$scope.saveSoundscape = function(soundscape){
 	var savedSoundscape = $scope.soundscape;
-	// console.log(savedPlaylist);
+	
 	ssStore.saveSs(savedSoundscape);
 	};
 
@@ -101,19 +90,16 @@ return {
 		soundscape = ss;
 		masterArray.push(ss);
 		console.log(masterArray);
-		// console.log(savedPlaylist);
+		
 	},
 	fetchMasterArray: function() {
-		// return savedPlaylist;
-		// console.log ('fetchMasterArray');
-		// console.log(masterArray)
+		
 		return masterArray;
 	},
 	fetchSs: function() {
 		return soundscape;
 	}
 	
-
 };
 
 });
@@ -123,7 +109,6 @@ app.directive('ssSoundscape', function(){
 	console.log('directive test')
 	return {
 		restrict: 'E',
-		// template:'<p>it works!</p>'
 		templateUrl: 'templates/soundscape.html'
 	};
 });
