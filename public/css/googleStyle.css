@@ -9,9 +9,12 @@
 /*BODY PROPERTIES*/
 
 body {
-    background-color: rgba(47, 79, 79, 0.73);
+    background-color: rgb(206, 222, 227); 
 }
 
+a {
+    color:rgb(74, 117, 130);
+}
 
 /*MAP PROPERTIES*/
 
@@ -32,11 +35,12 @@ body {
     position: relative;
     border: 2px solid black;
     border-radius: 5px;
-    background-color:rgba(184, 134, 11, 0.51);
+    background-color: rgba(61, 66, 67, 0.8);
+    letter-spacing: .1em;
     width: 40%;
     min-height: 30px;
     padding: 5px;
-    color:rgba(255, 69, 0, 0.45);
+    color:rgb(230, 230, 230);
     font-size: 2em;
     font-family: Galada, cursive;
     text-align: center;
@@ -52,8 +56,12 @@ body {
     width: 24%;
     text-align: center;
     font-family: lobster, cursive;
+    color: rgba(61, 66, 67, 0.8);
 }
 
+iframe {
+    
+}
 
 /* TEST NAV PROPERTIES*/
 #testNav {
@@ -75,6 +83,6 @@ body {
     padding: 5px;
 }
 .nav:hover { 
-    color:lightgray;
+    color: rgb(89, 89, 89);
     
 }
