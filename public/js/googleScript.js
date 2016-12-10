@@ -1,6 +1,7 @@
 
 //THESE VARIABLES ALLOW EACH MARKER TO RECIEVE A NEW LETTER ON THE MAP
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
+var labelColor = labels.fontcolor("white");
 var labelIndex = 0;
 
 //THIS FUNCTION IS FOR SET SET MARKERS
@@ -169,7 +170,8 @@ function placeMarkerAndPanTo(latLng, map) {
         position: latLng
         , map: map
         , label: labels[labelIndex++ % labels.length],
-         icon: image
+         icon: image,
+        scaledSize: new google.maps.Size(25, 25), // scaled size
 
     });
    
@@ -224,3 +226,6 @@ function placeMarkerAndPanTo(latLng, map) {
     
     
 } //END OF ADD MARKER FUNCTION
+
+
+
