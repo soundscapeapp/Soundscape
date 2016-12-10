@@ -1,106 +1,134 @@
+
+//THESE VARIABLES ALLOW EACH MARKER TO RECIEVE A NEW LETTER ON THE MAP
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      var labelIndex = 0;  
+var labelIndex = 0;
 
+//THIS FUNCTION IS FOR SET SET MARKERS
 function initMap() {
-      var uluru = {
-          lat: 42.3359668
-          , lng: -83.0511163
-      };
-      var uluru2 = {
-          lat: 42.335592
-          , lng: -82.989999
-      };
-      var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12
-          , center: uluru
-      });
-
-
-      var marker = new google.maps.Marker({
-          map: map
-          , position: uluru
-          , draggable: true
-          , animation: google.maps.Animation.DROP
-
-      });
-      // var marker2 = new google.maps.Marker({
-      //     map: map
-      //     , position: uluru2
-      //     , draggable: true
-      //     , animation: google.maps.Animation.DROP
-      // });
-      // marker.addListener('rightclick', function() {
-      //     infowindow.open(marker, marker2);
-      //   });
-       map.addListener('rightclick', function(e) {
-          placeMarkerAndPanTo(e.latLng, map);
-        });
-        
-      google.maps.event.addDomListener(marker, 'dblclick', function () {
-
-//          window.location.pathname = "/scapes.html"
-          document.location = "http://localhost:8080/#/scapes"
-
-      });
-
-           marker.addListener('rightclick', function() {
-          infowindow.open(map, marker);
-        });
-      // To add the marker to the map, call setMap();
-marker.setMap(map);
- 
-      // We add a DOM event here to show an alert if the DIV containing the
-      // map is clicked.
     
-      // google.maps.event.addDomListener(marker2, 'dblclick', function () {
-      //     //          window.alert('This will be a modal');
-      //      document.location = "http://localhost:8080/#/scapes"
+    //SET MARKER COORDINATES
+    var uluru = {
+        lat: 42.3359668
+        , lng: -83.0511163
+    };
 
+    //MAP DATA
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12
+        , center: uluru
+    });
 
-      // });
-      
-      }//END OF SET MARKER FUNCTION
+//SET MARKER DATA
+    var marker = new google.maps.Marker({
+        map: map
+        , position: uluru
+        , draggable: true
+        , animation: google.maps.Animation.DROP
 
-
-
-
-     function placeMarkerAndPanTo(latLng, map) {
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map,
-          label: labels[labelIndex++ % labels.length],
-           
-        });
-          marker.addListener('rightclick', function() {
-          infowindow.open(map, marker);
-        });
-          
-         google.maps.event.addDomListener(marker, 'dblclick', function () {
-          //          window.alert('This will be a modal');
-           document.location = "http://localhost:8080/#/scapes"
-
-
-      });
-         
-          var contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Check out this Soundscape</h1>'+
-            '<div id="bodyContent">'+
-             '<p id="create-scape"><b>Create</b>, a <b>Soundscape</b>, for the world to see and hear ' + '</p>' +
-            '<p id="scape-description">Soundscape Description: This was the first place I took my parents in detroit, nothing brings these memories back like the beatles'+
+    });
   
-            ' (last visited November 24, 1984).</p> '+
-            '</div>'+
-            '</div>';
+    //PLACE MARKER ON MAP ON RIGHT CLICK
+    map.addListener('rightclick', function (e) {
+        placeMarkerAndPanTo(e.latLng, map);
+    });
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString,
-           
-        });
+    google.maps.event.addDomListener(marker, 'dblclick', function () {
 
-         
-         
-        map.panTo(latLng);
-      }//END OF ADD MARKER FUNCTION
-      
+        //          window.location.pathname = "/scapes.html"
+        document.location = "http://localhost:8080/#/scapes"
+
+    });
+
+     //EVENT LISTENER THAT RETURNS THE POP UP WINDOW ON RIGHT CLICK
+    marker.addListener('rightclick', function () {
+        infowindow.open(map, marker);
+    });
+
+    
+         //IN THIS VARIABLE YOU WILL FIND THE DATA INSIDE THE INFO WINDOW
+    var contentString = '<div id="content">' +
+        '<div id="siteNotice">' +
+        '</div>' +
+        '<h1 id="firstHeading" class="firstHeading">Check out this Soundscape</h1>' +
+        '<div id="bodyContent">' +
+        '<p id="create-scape"><b>Create</b>, a <b>Soundscape</b>, for the world to see and hear ' + '</p>' +
+        '<p id="scape-description">Soundscape Description: This was the first place I took my parents in detroit, nothing brings these memories back like the beatles' +
+
+        ' (last visited November 24, 1984).</p> ' +
+        '</div>' +
+        '</div>';
+
+        
+//THIS VARIABLE HAS AN OBJECT CALLED CONTENTSTRING WHICH IS PART OF DATA INSIDE INFOWINDOW
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+
+    });
+
+
+};//END OF SET MARKER FUNCTION
+
+
+
+    //THIS FUNCTION ALLOWS USER TO CREATE NEW PINS ON MAP
+function placeMarkerAndPanTo(latLng, map) {
+    
+    
+    
+    
+    var marker = new google.maps.Marker({
+        position: latLng
+        , map: map
+        , label: labels[labelIndex++ % labels.length],
+
+    });
+   
+     
+    
+    //EVENT LISTENER THAT RETURNS THE POP UP WINDOW ON RIGHT CLICK
+    marker.addListener('rightclick', function () {
+        infowindow.open(map, marker);
+    });
+
+    
+    
+    
+    //EVENT LISTENER THAT REDIRECTS USER TO SCAPES PAGE WINDOW ON DOUBLE CLICK
+    google.maps.event.addDomListener(marker, 'dblclick', function () {
+        //          window.alert('This will be a modal');
+        document.location = "http://localhost:8080/#/scapes"
+
+
+    });
+
+    
+        //IN THIS VARIABLE YOU WILL FIND THE DATA INSIDE THE INFO WINDOW
+    var contentString = '<div id="content">' +
+        '<div id="siteNotice">' +
+        '</div>' +
+        '<h1 id="firstHeading" class="firstHeading">Check out this Soundscape</h1>' +
+        '<div id="bodyContent">' +
+        '<p id="create-scape"><b>Create</b>, a <b>Soundscape</b>, for the world to see and hear ' + '</p>' +
+        '<p id="scape-description">Soundscape Description: This was the first place I took my parents in detroit, nothing brings these memories back like the beatles' +
+
+        ' (last visited November 24, 1984).</p> ' +
+        '</div>' +
+        '</div>';
+
+        
+//THIS VARIABLE HAS AN OBJECT CALLED CONTENTSTRING WHICH IS PART OF DATA INSIDE INFOWINDOW
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+
+    });
+
+
+//CENTER MAP WHEN YOU ADD A NEW MARKER
+//    map.panTo(latLng);
+    
+    
+    
+    
+    
+    
+} //END OF ADD MARKER FUNCTION
