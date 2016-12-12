@@ -6,25 +6,25 @@
 
 
 
-<section ng-controller="spotifyData">
+<section ng-controller="data">
 
 <input class="input" type="text" ng-model="search" placeholder="Search for A Track"><br/>
 
-<button ng-click="findTracks()">Search Tracks </button> <br/>
+<button ng-click="findTracks(soundscape)">Search Tracks </button> <br/>
 
-<div ng-repeat="info in trackInfo" id="musicTracks">
-<a href="#/addScape" ng-click="getOneSong(info)"><img ng-src="{{info.image}}" width="75px"/>
+<div ng-repeat="info in trackInfo track by $index" id="musicTracks">
+<a href="#/addScape" ng-click="grabSong(info, soundscape)"><img ng-src="{{info.image}}" width="75px"/>
 <span class="individualTrack">
-<span> {{info.albumName}}</span>
+<span> {{info.album}}</span>
 <span> {{info.artist}}</span>
 </a>
 </span>
 </div>
-<p > {{denied}}</p>
+<p>{{denied}}</p>
 
 </section>
 
-<a href="#/scapes"> <button type="submit" ng-click="saveSoundscape(soundscape)" id="endButton" >Add to Soundscape</button> </a>
+<a href="#/scapes"> <button type="submit" id="endButton" >Add to Soundscape</button> </a>
 </form>
 
 

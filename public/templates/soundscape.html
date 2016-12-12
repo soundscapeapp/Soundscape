@@ -1,7 +1,16 @@
-<div>
+<!-- <div>
 	<p>{{scape.title}}</p>
 	<p>{{scape.description}}</p>
 	<iframe src={{test}} width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-</div>
+</div> -->
 
 <!-- https://embed.spotify.com/?uri=spotify%3Atrack%3A -->
+
+<div>
+	<p>{{scape.title}}</p>
+	<p>{{scape.description}}</p>
+	<p>{{scape.artist}}</p>
+	<p>{{scape.album}}</p>
+	<img ng-src="{{scape.albumName}}"/>
+	<iframe ng-src="{{scape.trackId}}" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+</div>

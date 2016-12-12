@@ -3,17 +3,20 @@ var app = angular.module("soundscape", ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider.when("/scapes", {
         templateUrl: "views/scapes.html",
-        controller: "modalController"
+        controller: "setController"
       
     });
     $routeProvider.when("/addScape", {
         templateUrl: "views/addScape.html",
-        controller: "addScapeController"
+        controller: "data"
     });
     $routeProvider.otherwise({
-        templateUrl: "views/map.html"
-       
+        templateUrl: "views/map.html"    
      });
+    
+});
 
+app.config(function($sceProvider) {
+  $sceProvider.enabled(false);
 });
 
